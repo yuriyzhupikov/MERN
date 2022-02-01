@@ -1,0 +1,38 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "mern",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yuriyzhupikov/MERN.git"
+  },
+  "keywords": [
+    "mongoDB",
+    "express",
+    "react",
+    "node"
+  ],
+  "author": "Yurii <webdev@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yuriyzhupikov/MERN/issues"
+  },
+  "homepage": "https://github.com/yuriyzhupikov/MERN#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "config": "^3.3.7",
+    "express": "^4.17.2",
+    "express-validator": "^6.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.9"
+  },
+  "devDependencies": {
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
