@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route, Redirect} from "react-router-dom";
+import {Route, Routes, Navigate} from "react-router-dom";
 import {LinksPage} from "./pages/LinksPage";
 import {CreatePage} from "./pages/CreatePage";
 import {DetailPage} from "./pages/DetailPage";
@@ -7,28 +7,21 @@ import {AuthPage} from "./pages/AuthPage";
 
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
+
         return(
-            <Switch>
-                <Route path="/links" exact>
-                    <LinksPage />
-                </Route>
-                <Route path="/create" exact>
-                    <CreatePage />
-                </Route>
-                <Route path="/detail/:id">
-                    <DetailPage />
-                </Route>
-                <Redirect to="/create"/>
-            </Switch>
+            <Routes>
+                <Route path="/links" exacl element={<LinksPage/>}/>
+                <Route path="/create" exacl element={<CreatePage/>} />
+                <Route path="/detail/:id" element={<DetailPage/>} />
+                <Route path="*" exacl element={<CreatePage/>} />
+            </Routes>
         );
     }
 
     return (
-        <Switch>
-            <Route path="/" exact>
-                <AuthPage />
-            </Route>
-            <Redirect to="/"/>
-        </Switch>
+        <Routes>
+            <Route path="/" exacl element={<AuthPage/>}/>
+            <Route path="*" exacl element={<AuthPage/>} />
+        </Routes>
     )
 }
