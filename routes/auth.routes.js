@@ -46,6 +46,15 @@ router.post('/login',
                     message: 'Invalid data during authorization'
                 })
             }
+            const {email, password} = req.body;
+            const user = await User.findOne({email});
+            if (!user) {
+                return res.status(400).json({message: 'Oops! There is no such user'});
+            }
+            const isMatchPassword = await bcrypt.compare(password, user.password);
+            if (!isMatchPassword) {
+                return res.status(400).json({message: 'Invalid password'});
+            }
 
         } catch (e) {
             res.status(500).json({message: 'Error'});
