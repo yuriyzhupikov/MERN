@@ -32,4 +32,23 @@ router.post('/register',
     }
 });
 
+router.post('/login',
+    [
+        check('email', 'Incorrect email').isEmail(),
+        check('password', 'The minimum password length is 6 characters').isLength({min: 6})
+    ],
+    async (req, res) => {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({
+                    errors: errors.array(),
+                    message: 'Invalid data during authorization'
+                })
+            }
+
+        } catch (e) {
+            res.status(500).json({message: 'Error'});
+        }
+    });
 module.exports = router;
