@@ -10,6 +10,7 @@ async function start() {
         await mongoose.connect(config.get('mongoURL'), {
 
         });
+        app.listen(PORT, () => console.log(`App has been started von port ${PORT}`));
     } catch (e) {
         console.log('Server Error', e.message);
         process.exit(1);
@@ -17,5 +18,3 @@ async function start() {
 }
 
 start();
-
-app.listen(PORT, () => console.log(`App has been started von port ${PORT}`));
