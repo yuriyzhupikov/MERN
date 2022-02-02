@@ -1,7 +1,8 @@
 import {useRoutes} from "./routes";
 import {useAuth} from "./hooks/auth.hook";
-import 'materialize-css';
 import {AuthContext} from "./context/Auth.context";
+import {NavBar} from "./components/NavBar";
+import 'materialize-css';
 
 function App() {
     const {token, login, logout, userId} = useAuth();
@@ -11,6 +12,7 @@ function App() {
         <AuthContext.Provider value={{
             token, login, logout, userId, isAuthenticated
         }}>
+            { isAuthenticated && <NavBar /> }
             <div className="container">
                 {routes}
             </div>
