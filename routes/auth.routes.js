@@ -61,7 +61,7 @@ router.post('/login',
             // authorization process via jwt
             const token = jwt.sign({userID: user.id}, config.get('jwtSecret'));
 
-            res.json({token, userID: user.id});
+            res.json({token, userId: user.id});
         } catch (e) {
             res.status(500).json({message: 'Error'});
         }
