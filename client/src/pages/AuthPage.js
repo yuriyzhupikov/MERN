@@ -9,8 +9,8 @@ export const AuthPage = () => {
     });
     const changeHandler = event => {
         setForm({
-            ...form, [event.target.name]: [event.target.value]
-        })
+            ...form, [event.target.name]: event.target.value
+        });
     };
 
     const registerHandler = async () => {
@@ -33,12 +33,12 @@ export const AuthPage = () => {
                         <div>
 
                             <div className="input-field">
-                                <input placeholder="Введите email" id="email" type="text"/>
-                                <label htmlFor="email" name="email" className="yellow-input" onChange={changeHandler}>Емайл</label>
+                                <input placeholder="Введите email" id="email" name="email" type="text" onChange={changeHandler}/>
+                                <label htmlFor="email" className="yellow-input">Емайл</label>
                             </div>
                             <div className="input-field">
-                                <input placeholder="Введите пароль" id="password" type="password"/>
-                                <label htmlFor="password" name="password" className="yellow-input" onChange={changeHandler}>Пароль</label>
+                                <input placeholder="Введите пароль" id="password" name="password" type="password" onChange={changeHandler}/>
+                                <label htmlFor="password" className="yellow-input">Пароль</label>
                             </div>
 
                         </div>
