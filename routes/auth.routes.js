@@ -59,11 +59,8 @@ router.post('/login',
                 return res.status(400).json({message: 'Invalid password'});
             }
             // authorization process via jwt
-            const token = jwt.sign(
-                {userID: user.id},
-                config.get('jwtSecret'),
-                {expiresIN: '1h'}
-            );
+            const token = jwt.sign({userID: user.id}, config.get('jwtSecret'));
+
             res.json({token, userID: user.id});
         } catch (e) {
             res.status(500).json({message: 'Error'});
