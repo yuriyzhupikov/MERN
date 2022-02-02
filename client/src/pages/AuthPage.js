@@ -23,9 +23,14 @@ export const AuthPage = () => {
         try {
             const data = await request('/api/auth/register', 'POST', {...form});
             console.log('Data', data);
-        } catch (e) {
+        } catch (e) {}
+    }
 
-        }
+    const loginHandler = async () => {
+        try {
+            const data = await request('/api/auth/login', 'POST', {...form});
+            console.log('Data', data);
+        } catch (e) {}
     }
 
     return (
@@ -50,7 +55,7 @@ export const AuthPage = () => {
                         </div>
                     </div>
                     <div className="card-action">
-                        <button className="btn yellow darken-4" style={{marginRight: 10}} disabled={loading}>Войти</button>
+                        <button className="btn yellow darken-4" style={{marginRight: 10}} onClick={loginHandler} disabled={loading}>Войти</button>
                         <button className="btn grey lighten-1 black-text" onClick={registerHandler} disabled={loading}>Регистрация</button>
                     </div>
                 </div>
