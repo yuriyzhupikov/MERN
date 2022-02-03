@@ -6,6 +6,7 @@ const {validationResult} = require("express-validator");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const router = Router();
+const authMW = require('../middleware/auth.middleware');
 
 // пост запрос генерирования ссылки
 router.post('/generate', async  (req,res) => {
@@ -17,9 +18,9 @@ router.post('/generate', async  (req,res) => {
 });
 
 // гет запрос для получения всех ссылок
-router.get('/', async (req, res) => {
+router.get('/', authMW, async (req, res) => {
     try {
-        const links = await Link.find({owner: null});
+        const links = await Link.find({owner: req.user.userId});
         res.json(links);
     } catch (e) {
         res.status(500).json({message: 'Error'});
