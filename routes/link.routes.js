@@ -1,17 +1,31 @@
 const {Router} = require('express');
+const shortid = require('shortid');
 const config = require('config');
-
 const Link = require('../models/Link');
-const {validationResult} = require("express-validator");
-const User = require("../models/User");
-const bcrypt = require("bcrypt");
-const router = Router();
 const authMW = require('../middleware/auth.middleware');
+const router = Router();
 
 // пост запрос генерирования ссылки
-router.post('/generate', async  (req,res) => {
+router.post('/generate', authMW, async  (req,res) => {
     try {
+        const baseUrl = config.get('baseUrl');
 
+        const {from}  = req.body;
+        const code = shortid.generate();
+
+        const link = await  Link.findById({from});
+        if (link) {
+            return res.json({link});
+        }
+
+        const to = baseUrl + '/to/' + code;
+
+        const newLink = new Link({
+            from, to, code, owner: req.user.userId,
+        });
+        newLink.save();
+
+        res.status(201).json({newLink});
     } catch (e) {
         res.status(500).json({message: 'Error'});
     }
@@ -27,7 +41,8 @@ router.get('/', authMW, async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+// получение ссылки по id
+router.get('/:id', authMW, async (req, res) => {
     try {
         const link = await Link.findById(req.params.id);
     } catch (e) {
@@ -36,5 +51,4 @@ router.get('/:id', async (req, res) => {
 });
 
 
-// получение ссылки по id
 module.exports = router;
