@@ -50,12 +50,12 @@ export const AuthPage = () => {
                         <div>
 
                             <div className="input-field">
-                                <input placeholder="Введите email" id="email" name="email" type="text" onChange={changeHandler}/>
-                                <label htmlFor="email" className="yellow-input">Емайл</label>
+                                <input placeholder="Введите email" id="email" name="email" type="text" className="yellow-input" onChange={changeHandler}/>
+                                <label htmlFor="email">Емайл</label>
                             </div>
                             <div className="input-field">
-                                <input placeholder="Введите пароль" id="password" name="password" type="password" onChange={changeHandler}/>
-                                <label htmlFor="password" className="yellow-input">Пароль</label>
+                                <input placeholder="Введите пароль" id="password" name="password" type="password" className="yellow-input" onChange={changeHandler}/>
+                                <label htmlFor="password">Пароль</label>
                             </div>
 
                         </div>
