@@ -13,7 +13,7 @@ router.post('/generate', authMW, async  (req,res) => {
         const {from}  = req.body;
         const code = shortid.generate();
 
-        const link = await  Link.findById({from});
+        const link = await Link.findOne({from});
         if (link) {
             return res.json({link});
         }

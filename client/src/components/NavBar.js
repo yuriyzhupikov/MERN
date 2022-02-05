@@ -1,7 +1,5 @@
 import React, {useContext} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
-import {CreatePage} from "../pages/CreatePage";
-import {LinksPage} from "../pages/LinksPage";
 import {AuthContext} from "../context/Auth.context";
 
 export const NavBar = () => {
