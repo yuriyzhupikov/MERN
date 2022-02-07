@@ -17,3 +17,9 @@ input.yellow-input:focus {
     border-bottom: 1px solid #ffeb3b;
     box-shadow: 0 1px 0 0 #ffeb3b!important;
 }
+
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+    position: absolute;
+    opacity: 100;
+    pointer-events:auto;
+}

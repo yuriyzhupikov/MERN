@@ -5,6 +5,9 @@ import {CreatePage} from "./pages/CreatePage";
 import {DetailPage} from "./pages/DetailPage";
 import {AuthPage} from "./pages/AuthPage";
 
+import {FilterableProductTable} from "./components/productsFunc/FilterableProductTable";
+import {PRODUCTS} from './components/products/dataProducts';
+
 export const useRoutes = isAuthenticated => {
     if (isAuthenticated) {
 
@@ -13,6 +16,7 @@ export const useRoutes = isAuthenticated => {
                 <Route path="/links" exacl element={<LinksPage/>}/>
                 <Route path="/create" exacl element={<CreatePage/>} />
                 <Route path="/detail/:id" element={<DetailPage/>} />
+                <Route path="/products/" element={<FilterableProductTable products={PRODUCTS}/>} />
                 <Route path="*" exacl element={<CreatePage/>} />
             </Routes>
         );
