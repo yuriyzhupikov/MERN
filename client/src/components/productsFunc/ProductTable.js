@@ -7,7 +7,7 @@ export const ProductTable = (props) => {
     const rows = [];
 
     props.product.forEach((product) => {
-        if (product.name.indexOf(props.filterText) === -1) {
+        if (product.name.toLowerCase().indexOf(props.filterText.toLowerCase()) === -1) {
             return;
         }
         if (props.inStocked && !product.stocked) {
