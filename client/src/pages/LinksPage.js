@@ -1,6 +1,5 @@
 import React, {useCallback, useContext, useEffect, useState} from "react";
 import {useHttp} from "../hooks/http.hook";
-import {useParams} from "react-router-dom";
 import {AuthContext} from "../context/Auth.context";
 import {Loader} from "../components/Loader";
 import {LinksList} from "../components/linksList";
