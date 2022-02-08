@@ -21,7 +21,7 @@ export const DetailPage = () => {
     },[token, linkId, request]);
 
     useEffect(() => {
-        let p = getLink();
+        getLink();
     }, [getLink]);
 
     if (loading) {
