@@ -21,7 +21,7 @@ router.post('/generate', authMW, async  (req,res) => {
         const to = baseUrl + '/to/' + code;
 
         const newLink = new Link({
-            from, to, code, owner: req.user.userId,
+            from, to, code, owner: req.user.userID,
         });
         newLink.save();
 
@@ -34,7 +34,7 @@ router.post('/generate', authMW, async  (req,res) => {
 // гет запрос для получения всех ссылок
 router.get('/', authMW, async (req, res) => {
     try {
-        const links = await Link.find({owner: req.user.userId});
+        const links = await Link.find({owner: req.user.userID});
         res.json(links);
     } catch (e) {
         res.status(500).json({message: 'Error'});
