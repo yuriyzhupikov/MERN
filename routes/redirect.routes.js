@@ -1,9 +1,9 @@
 const {Router} = require('express');
-const {redirect} = require('../controllers/redirectController/');
+const {redirectController} = require('../controllers/redirectController');
 const router = Router();
 
 router.get('/:id',
-    async (req, res) => redirect(req, res)
+    async (req, res) => redirectController(req, res)
 );
 
 module.exports = router;

@@ -1,15 +1,7 @@
-const Link = require("../models/Link");
+const {redirectService} = require('../services/redirectService');
 
-async function redirect (req, res) {
-    try {
-        const link = await Link.findOne({code: req.params.id});
-        if (!link) {
-            res.status(404).json('ссылка не найдена');
-        }
-        link.clicks++;
-        await link.save();
-        return res.redirect(link.from);
-    } catch (e) {}
+async function redirectController (req, res) {
+    redirectService(req, res);
 }
 
-module.exports = {redirect}
+module.exports = {redirectController}
