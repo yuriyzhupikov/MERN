@@ -2,6 +2,7 @@ const express = require('express');
 const config = require('config');
 const path = require('path');
 const dataBase = require("./services/dbService");
+const {DB_MONGO} = require("./consts");
 
 const app = express();
 const PORT = config.get('port') || 5000;
@@ -20,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 
 async function start() {
     try {
-        await dataBase.connect('mongoDB');
+        await dataBase.connect(DB_MONGO);
         app.listen(PORT, () => console.log(`App has been started von port ${PORT}`));
     } catch (e) {
         console.log('Server Error', e.message);
