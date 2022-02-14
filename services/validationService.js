@@ -1,4 +1,5 @@
 const {check, validationResult} = require("express-validator");
+const {onStatusService} = require("./statusService");
 
 function validationRulesService () {
     return [
@@ -9,10 +10,10 @@ function validationRulesService () {
 function validationFormService (req, res) {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.status(400).json({
+        return onStatusService(400, {
             errors: errors.array(),
             message: 'Incorrect data during registration'
-        })
+        }, res);
     }
 }
 

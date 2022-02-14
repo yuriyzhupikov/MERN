@@ -1,6 +1,7 @@
 const config = require("config");
 const shortid = require("shortid");
 const Link = require("../models/Link");
+const {onStatusService} = require("./statusService");
 
 async function generateService(req, res)  {
     try {
@@ -21,9 +22,9 @@ async function generateService(req, res)  {
         });
         newLink.save();
 
-        res.status(201).json({newLink});
+        onStatusService(201, {newLink}, res);
     } catch (e) {
-        res.status(500).json({message: 'Error'});
+        onStatusService(500, 'Error', res);
     }
 }
 
@@ -32,7 +33,7 @@ async function getOneService(req, res) {
         const link = await Link.findById(req.params.id);
         res.json(link);
     } catch (e) {
-        res.status(500).json({message: 'Error'});
+        onStatusService(500, 'Error', res);
     }
 }
 
@@ -41,7 +42,7 @@ async function getAllService(req, res) {
         const links = await Link.find({owner: req.user.userID});
         res.json(links);
     } catch (e) {
-        res.status(500).json({message: 'Error'});
+        onStatusService(500, 'Error', res);
     }
 }
 
