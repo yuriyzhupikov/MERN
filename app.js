@@ -1,7 +1,7 @@
 const express = require('express');
 const config = require('config');
-const mongoose = require('mongoose');
 const path = require('path');
+const dataBase = require("./services/dbService");
 
 const app = express();
 const PORT = config.get('port') || 5000;
@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === 'production') {
 
 async function start() {
     try {
-        await mongoose.connect(config.get('mongoURL'));
+        await dataBase.connect('mongoDB');
         app.listen(PORT, () => console.log(`App has been started von port ${PORT}`));
     } catch (e) {
         console.log('Server Error', e.message);
