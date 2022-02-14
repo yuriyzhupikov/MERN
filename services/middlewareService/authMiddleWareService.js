@@ -1,4 +1,3 @@
-// Для перехвата запросов
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
