@@ -2,7 +2,7 @@ const express = require('express');
 const config = require('config');
 const path = require('path');
 const dataBase = require("./services/dbService");
-const {DB_MONGO} = require("./consts");
+const {DB_MONGO} = require("./config/consts");
 
 const app = express();
 const PORT = config.get('port') || 5000;

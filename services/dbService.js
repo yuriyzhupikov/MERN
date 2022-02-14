@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const config = require("config");
-const {DB_MONGO} = require("../consts");
+const {DB_MONGO} = require("../config/consts");
 
 module.exports = {
     connect: async function (url) {
