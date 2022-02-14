@@ -7,9 +7,9 @@ const app = express();
 const PORT = config.get('port') || 5000;
 
 app.use(express.json({extended: true}));
-app.use('/api/auth', require("./routes/auth.routes"));
-app.use('/api/link', require("./routes/link.routes"));
-app.use('/to', require('./routes/redirect.routes'));
+app.use('/api/auth', require("./routes/authRoutes"));
+app.use('/api/link', require("./routes/linkRoutes"));
+app.use('/to', require('./routes/redirectRoutes'));
 
 if (process.env.NODE_ENV === 'production') {
     app.use('/', express.static(path.resolve(__dirname, 'client', 'build')));
