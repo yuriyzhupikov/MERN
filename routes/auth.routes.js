@@ -1,16 +1,16 @@
 const {Router} = require('express');
-const validation = require('../validation/validation');
+const {validationRulesService} = require('../services/validationService');
 const router = Router();
-
-const {login, registration} = require('../controllers/authController');
+const {loginController, registrationController} = require('../controllers/authController');
 
 router.post('/register',
-    validation,
-    async (req, res) => login(req, res)
+    validationRulesService(),
+    async (req, res) => loginController(req, res)
 );
 
 router.post('/login',
-    validation,
-    async (req, res) => registration(req, res)
+    validationRulesService(),
+    async (req, res) => registrationController(req, res)
 );
+
 module.exports = router;
